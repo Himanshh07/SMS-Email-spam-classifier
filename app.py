@@ -58,19 +58,39 @@
 
 # purify code
 
+# import streamlit as st
+# import pickle
+# import string
+# import nltk
+
+# # Download necessary NLTK data
+# nltk.download('punkt')
+# nltk.download('stopwords')
+
+# from nltk.corpus import stopwords
+# from nltk.stem.porter import PorterStemmer
+
+# ps = PorterStemmer()
+
+
 import streamlit as st
 import pickle
 import string
 import nltk
+import os
 
-# Download necessary NLTK data
-nltk.download('punkt')
-nltk.download('stopwords')
+# Set a custom nltk data path and environment variable
+NLTK_PATH = "/tmp/nltk_data"
+nltk.data.path.append(NLTK_PATH)
+os.environ["NLTK_DATA"] = NLTK_PATH
+
+# Download necessary NLTK data if not already present
+nltk.download('punkt', download_dir=NLTK_PATH)
+nltk.download('stopwords', download_dir=NLTK_PATH)
 
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
-ps = PorterStemmer()
 
 def transform_text(text):
     text = text.lower()
