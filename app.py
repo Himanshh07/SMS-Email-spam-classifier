@@ -91,6 +91,8 @@ nltk.download('stopwords', download_dir=NLTK_PATH)
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+# ✅ Define the stemmer object
+ps = PorterStemmer()
 
 def transform_text(text):
     text = text.lower()
@@ -140,4 +142,3 @@ if st.button("Predict"):
         st.error("🚨 Spam Message Detected!")
     else:
         st.success("✅ Not a Spam Message!")
-
