@@ -31,8 +31,6 @@ def transform_text(text):
         y.append(ps.stem(i))
 
     return " ".join(y)
-"C:\Users\Manish\Desktop\dataframefile\SMS spam detector\sms_spam_detector.ipynb"
-
 tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
 model = pickle.load(open('main.pkl', 'rb'))
 
