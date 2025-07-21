@@ -85,33 +85,33 @@ nltk.data.path.append(NLTK_PATH)
 os.environ["NLTK_DATA"] = NLTK_PATH
 
 # Download necessary NLTK data if not already present
-nltk.download('punkt', download_dir=NLTK_PATH)
+# nltk.download('punkt', download_dir=NLTK_PATH)
 nltk.download('stopwords', download_dir=NLTK_PATH)
 
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
-# ✅ Define the stemmer object
+# Define the stemmer object
 ps = PorterStemmer()
+
+from nltk.tokenize import RegexpTokenizer
+tokenizer = RegexpTokenizer(r'\w+')
 
 def transform_text(text):
     text = text.lower()
-    text = nltk.word_tokenize(text)
+    text = tokenizer.tokenize(text)
 
-    # Remove non-alphanumeric characters
     y = []
     for i in text:
         if i.isalnum():
             y.append(i)
 
-    # Remove stopwords and punctuation
     text = y[:]
     y.clear()
     for i in text:
         if i not in stopwords.words('english') and i not in string.punctuation:
             y.append(i)
 
-    # Stemming
     text = y[:]
     y.clear()
     for i in text:
